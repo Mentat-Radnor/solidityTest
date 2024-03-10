@@ -18,6 +18,10 @@ contract Payments {
 
   mapping(address => Balance) public balances;
 
+  function currentBalance() public view returns(uint) {
+    return address(this).balance;
+  }
+
   function getPayment(address _addr, uint _index) public view returns(Payment memory) {
     return balances[_addr].payments[_index];
   }
