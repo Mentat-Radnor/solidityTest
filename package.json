@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "waffle",
+    "test": "NODE_ENV=test mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.21.0"
+    "hardhat": "^2.21.0",
+    "mocha": "^10.4.0"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
     "chai": "^4.4.1",
     "waffle": "^0.0.4"
   }

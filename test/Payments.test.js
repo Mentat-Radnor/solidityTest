@@ -42,5 +42,7 @@ describe("Payments", () => {
     // const balance = await payments.currentBalance();
 
     // expect(balance).not.eq(0);
+
+    // отправка 2х платежей, написать о владельце контракта
   });
 })
