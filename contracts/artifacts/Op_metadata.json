@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "pay",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Optimize.sol": "Op"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Optimize.sol": {
+			"keccak256": "0x183043ed639b25548dfcecb0b88c647211ac5f7a4122a6891af162439f53ca67",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8626664c02a6b935c5ea13b581506fc81b8eb1f5a8ff766f1d2bc8934a6937f8",
+				"dweb:/ipfs/QmcyL9mGEPTTXCeQqppGSezoLZFamptzcVxVajLaF4r8g5"
+			]
+		}
+	},
+	"version": 1
+}
