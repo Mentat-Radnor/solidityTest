@@ -31,6 +31,15 @@ contract AucEngine {
     owner = msg.sender;
   }
 
+  modifier onlyOwner() {
+    require(owner == msg.sender, 'You are not owner');
+    _;
+  }
+
+  function withdraw() external onlyOwner{
+    payable(owner).transfer(address(this).balance);
+  }
+
   function createAuction(
     uint _startingPrice, uint _discountRate,string calldata _item, uint _duration
   ) external {
@@ -56,7 +65,7 @@ contract AucEngine {
 
   function getPriceFor(uint index) public view returns(uint) {
     Auction memory currentAuction = auctions[index];
-    require(!currentAuction.isStopped, 'Stoped!');
+    require(!currentAuction.isStopped, 'Stopped!');
     uint elapsed = block.timestamp - currentAuction.startAt;
     uint discount = currentAuction.discountRate * elapsed;
     return currentAuction.startingPrice - discount;
