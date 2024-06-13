@@ -28,8 +28,6 @@ describe('Conditions', () => {
     return [tx, amount];
   }
 
-  const ownerWithdraw = 
-
   it('should allow to send money', async () => {
     const userValue = 120;
     const [sendMoneyTx, amount] = await sendMoney(other_addr, userValue);

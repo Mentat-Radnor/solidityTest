@@ -25,6 +25,7 @@ contract AucEngine {
 
   // Запись в журнале событий
   event AuctionCreated(uint index, string itemName, uint startingPrice, uint duration);
+  event AuctionEnded(uint index, uint finalPrice, address winner);
 
   constructor() {
     owner = msg.sender;
@@ -51,5 +52,32 @@ contract AucEngine {
     auctions.push(newAuction);
 
     emit AuctionCreated(auctions.length, _item, _startingPrice,  duration);
+  }
+
+  function getPriceFor(uint index) public view returns(uint) {
+    Auction memory currentAuction = auctions[index];
+    require(!currentAuction.isStopped, 'Stoped!');
+    uint elapsed = block.timestamp - currentAuction.startAt;
+    uint discount = currentAuction.discountRate * elapsed;
+    return currentAuction.startingPrice - discount;
+  }
+
+  function buy(uint index) external payable {
+    Auction storage currentAuction = auctions[index];
+    require(!currentAuction.isStopped, 'Stopped!');
+    require(block.timestamp < currentAuction.endsAt, 'ended!');
+    uint currentPrice = getPriceFor(index);
+    require(msg.value >= currentPrice, 'not enough funds!');
+    currentAuction.isStopped = true;
+    currentAuction.finalPrice = currentPrice;
+    uint refund = msg.value - currentPrice;
+    if (refund > 0) {
+      payable(msg.sender).transfer(refund);
+    }
+    currentAuction.seller.transfer(
+      currentPrice - ((currentPrice * FEE) / 100)
+    );
+
+    emit AuctionEnded(index, currentPrice, msg.sender);
   }
 }

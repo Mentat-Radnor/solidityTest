@@ -14,7 +14,7 @@ contract Op {
     // bytes32 public hash = 0x9c22ff; // более оптимально сразу записать хэш хотя это харкод
     mapping(address => uint) payments;
 
-    uint8[] testArray = [1,2,3] // будет стоит меньше чем просто безразмерный массив без указания байт
+    uint8[] testArray = [1,2,3]; // будет стоит меньше чем просто безразмерный массив без указания байт
     // uint[] testArray2 = [1,2,3]
 
     function pay() external payable {
